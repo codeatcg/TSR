@@ -2,16 +2,16 @@
 
 ## Description:
 
-With the development of resequencing and genotype imputation methods large amounts of SNPs are available. Many of the SNPs are thought to be redundant. TSR was developed mainly to select appropriate SNPs to improve the genome prediction and both genotype and dosage are supported. Several methods can be chose: minimal allele frequency, linkage disequilibrium, cluster, average distance and p-value from genome wide association studies. The program also has other functions. It can be used to estimate the linkage disequilibrium decay. It can also be use to estimate the variance of SNP effects and build weighted genome relationship.
+With the development of resequencing and genotype imputation methods large amounts of SNPs are available. Many of the SNPs are thought to be redundant. TSR was developed mainly to select appropriate SNPs to improve the genome prediction and both genotype and dosage are supported. Several methods can be chosen: minimal allele frequency, linkage disequilibrium (similar to plink prune method, but for TSR the slip window is based on physical position, not SNP counts), cluster (quasi nearest neighbour), average distance and p-value from genome wide association studies. The program also has other functions. It can be used to estimate the linkage disequilibrium decay and it's fast and memory efficient. It can also be used to estimate the variance of SNP effects and build weighted genome relationship.
 
 ## Version:
 
 The program was written by C++ and compiled using gcc 4.4.7 on a 64-bit Linux version. 
-Current version: TSR_float_v0.1.0 (genotypes are stored in a float and compatible with software MGP_float)
+Current version: TSR_float_v0.1.0 (genotypes are stored in floats and compatible with software MGP_float (https://github.com/codeatcg/MGP)). For current version when the number of chromosomes is more than 1 the output positions of pruned SNPs may be not correct. A new version fixed the bug and it has new features. The new version supports genotype in bed format (a genotye takes 2 bits) and supplies another two methods (sequential core and tuned sequential core) to select SNPs. The new version will be released soon.
 
 ## Command and options:
 
-**vcf2tag**         &ensp; &ensp; &ensp; &ensp; TSR vcf2tag [options]
+**vcf2tag**         &nbsp; &nbsp; &nbsp; &nbsp; TSR vcf2tag [options]
 
 Convert genotypes in VCF format to binary format. Binary genotypes are used to build genome relationship and get appropriate SNPs to improve the genome prediction and genome wide association.
 
@@ -50,7 +50,7 @@ Convert genotypes in VCF format to binary format. Binary genotypes are used to b
      --part               genotype file is partial and the output kinship file need to be merged
 
 
-**ld**         &ensp; &ensp; &ensp; &ensp; TSR ld [options]
+**ld**         &nbsp; &nbsp; &nbsp; &nbsp; TSR ld [options]
 
 Linkage disequilibrium decay was estimated by the correlation coefficients between markers, which was thought to be comparable with the method based on linkage phase. All SNP pairs are evaluated, but it’s optional that just using part of pairs if maker densities are high.
 
@@ -63,7 +63,7 @@ Linkage disequilibrium decay was estimated by the correlation coefficients betwe
 
 
 
-**wkin**         &ensp; &ensp; &ensp; &ensp; TSR wkin [options]
+**wkin**         &nbsp; &nbsp; &nbsp; &nbsp; TSR wkin [options]
 
 Estimated breeding value (EBV), relationship and binary genotype are needed to build weighted genome relationship. It’s similar to iteration ssGBLUP but the analysis can be parallelized by chromosomes or chromosome segments.
 
@@ -84,7 +84,7 @@ Estimated breeding value (EBV), relationship and binary genotype are needed to b
     --part                  genotype file is partial and the output kinship file needs to be merged
 
 
-**qtn**         &ensp; &ensp; &ensp; &ensp; TSR qtn [options]
+**qtn**         &nbsp; &nbsp; &nbsp; &nbsp; TSR qtn [options]
 
 Trait specific markers were selected by p value from genome wide association studies.
 
